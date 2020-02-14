@@ -59,7 +59,7 @@ class ShowPopUps {
 
 // 示例，open与close总是成双成对的出现
 let time = 300; // or 3000
-let test = new ShowPopUps(5000)
+let test = new ShowPopUps(time)
 for (let i = 0; i < 5; i++) {
     test.addPop({
         open: () => console.log('open:' + i),

@@ -19,7 +19,8 @@ class ShowPopUps {
 
     // 调用展示弹窗的方法
     showPopFnc() {
-        // ? 如果人为控制展示弹窗的时间间隔比this.timeCell小,则会在上一个定时器还在等待期间就执行了showPopFunc方法，
+        // ? 如果人为控制展示弹窗的时间间隔比this.timeCell小,
+        // ? 则会在上一个定时器还在等待期间就执行了showPopFunc方法，
         // ? 所以这时候清除定时器是有必要的，时间间隔用的会是操作的时间间隔 
         clearTimeout(this.timer); 
         // 如果此时关闭队列长度比展示队列还要长，那么需要先关闭一次，才能再次展示

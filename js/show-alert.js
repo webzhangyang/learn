@@ -12,7 +12,8 @@ class ShowPopUps {
         // * index参数可选，表示把弹窗的打开/关闭的方法插入到指定的位置
         if (!open || !close) return console.warn('打开弹窗和关闭弹窗的方法必须同时存在');
         if (!index) index = this.showPops.length;
-        if (this.showPops[index]) index++; // * 如果传递进来的下标位置处已经有值了，那就顺位往后挪一位
+        // * 如果传递进来的下标位置处已经有值了，那就顺位往后挪一位
+        if (this.showPops[index]) index++; 
         this.showPops[index] = open;
         this.closePops[index] = close;
     }
@@ -27,7 +28,8 @@ class ShowPopUps {
         if (this.closePops.length > this.showPops.length) {
             this.closePopFnc();
             this.timer = setTimeout(() => {
-                this.showPopFnc(); // 展示下一个弹窗是需要等待一个时间间隔
+                // 展示下一个弹窗是需要等待一个时间间隔
+                this.showPopFnc(); 
             }, this.timeCell);
             return
         }
@@ -36,17 +38,18 @@ class ShowPopUps {
 
     // 调用关闭弹窗的方法
     closePopFnc(callback) {
-        this.changePopFnc('closePops'); // 关闭弹窗是立马关闭
-
+        this.changePopFnc('closePops');
     }
 
     // 调用打开/关闭弹窗的方法
     changePopFnc(type = 'showPops') {
         if (this[type].length === 0) return;
-        let func = this[type].shift(); // * 首先确定可以拿到第一个元素后，就把它移除队列，然后调用
+        // * 拿到数组第一个元素后，就把它移除队列，然后调用
+        let func = this[type].shift(); 
         if (typeof func === 'function') {
             func();
         } else {
+            // 如果func不是方法（可能为空），那就跳过，继续执行下一个
             this.changePopFnc(type)
         }
     }
